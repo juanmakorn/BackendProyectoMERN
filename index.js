@@ -1,5 +1,6 @@
-import express from 'express';
+import express, { request } from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 
 console.log('hola funciona el backend');
 
@@ -17,3 +18,9 @@ console.log('puerto de trabajo   ' + app.get('PORT'))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
+app.use(morgan('dev'));
+
+//rutes
+app.get('/productos',(req,res)=>{
+res.send('prueba de productos')
+})
