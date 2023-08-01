@@ -1,6 +1,11 @@
-import express, { request } from 'express';
+import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import * as dotenv from "dotenv";
+import	'./src/database/dbConnection'
+import productosRouter from "./src/routes/productos.routes";
+
+dotenv.config();
 
 console.log('hola funciona el backend');
 
@@ -21,6 +26,4 @@ app.use(cors());
 app.use(morgan('dev'));
 
 //rutes
-app.get('/productos',(req,res)=>{
-res.send('prueba de productos')
-})
+app.use("/productos", productosRouter)

@@ -4,7 +4,7 @@ import { crearProducto } from "../controllers/productos.controllers";
 
 const router = Router();
 
-router.route("/productos").post(validarProducto, crearProducto)
+router.route("/").post(validarProducto, crearProducto)
 
 
 export default router;

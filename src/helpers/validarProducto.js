@@ -1,7 +1,8 @@
 import { check } from "express-validator";
+import resultadoValidacion from "./resultadoValidacion";
 
 const validarProducto = [
-    check("nombreProducto")
+    check("nombre")
         .notEmpty()
         .withMessage("EL nombre del producto es obligatorio")
         .isLength({ min: 2, max: 100 })
@@ -22,7 +23,7 @@ const validarProducto = [
                 throw new Error("El precio debe estar entre 1 y 10000");
             }
         }),
-    check("nombreProducto")
+    check("detalle")
         .notEmpty()
         .withMessage("El detalle del producto es obligatorio")
         .isLength({ min: 2, max: 250 })
