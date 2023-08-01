@@ -11,8 +11,6 @@ const productoSchema = new Schema({
     estado: {
         type: String,
         required: true,
-        minLenght: 2,
-        maxLenght: 10,
     },
     precio: {
         type: Number,
