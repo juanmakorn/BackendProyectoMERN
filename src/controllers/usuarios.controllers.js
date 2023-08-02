@@ -1,12 +1,11 @@
 import Usuario from "../models/usuario";
 import bcrypt from 'bcrypt'
 
-export const Register = async (req, res) => {
+export const register = async (req, res) => {
     try {
       const { email, password } = req.body;
   
       let usuario = await Usuario.findOne({ email });
-      console.log(usuario);
       if (usuario) {
 
         return res.status(400).json({
