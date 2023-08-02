@@ -1,4 +1,5 @@
 import Usuario from "../models/usuario";
+import bcrypt from 'bcrypt'
 
 export const obtenerListaUsuarios = async (req, res) => {
     try {
@@ -23,3 +24,7 @@ export const obtenerUsuario = async (req, res) => {
         });
     }
 };
+
+export const login = async (req,res) => {
+    
+}
