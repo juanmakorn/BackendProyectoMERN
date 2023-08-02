@@ -23,7 +23,6 @@ export const crearProducto = async (req, res) => {
     }
 };
 
-
     export const borrarProducto = async (req, res) => {
         try {
             await Producto.findByIdAndDelete(req.params.id);
