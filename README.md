@@ -14,18 +14,17 @@ Este repositorio contiene el Backend del proyecto final del curso de FullStack d
 
 ## Tecnologias / Herramientas 🛠 
 
-- [Bootstrap v5.3](https://getbootstrap.com/)
-- [React Bootstrap](https://react-bootstrap.netlify.app/)
-- [React Bootstrap Icons](https://www.npmjs.com/package/react-bootstrap-icons)
-- [React Router](https://reactrouter.com/)
-- [Sweet Alert](https://sweetalert2.github.io/)
-- [React Hook Form](https://react-hook-form.com/)
+- [Babel](https://babeljs.io/)
+- [Cors](https://www.npmjs.com/package/cors)
+- [Express](https://expressjs.com/es/)
+- [Morgan](https://www.npmjs.com/package/morgan)
+- [Mongoose](https://mongoosejs.com/)
 
 ## Como utilizar este repositorio 🖥
 En una terminal usar los siguientes comando
 
 ```
-git clone https://github.com/nicopowell/proyectoMERN.git
+git clone https://github.com/juanmakorn/BackendProyectoMERN.git
 
 npm i
 
