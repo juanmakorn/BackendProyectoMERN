@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { obtenerListaUsuarios, obtenerUsuario ,login,register} from "../controllers/usuarios.controllers";
+import { obtenerListaUsuarios, obtenerUsuario ,login,register, borrarUsuario} from "../controllers/usuarios.controllers";
 
 const router = Router();
 
 router.route("/usuarios").get(obtenerListaUsuarios)
-router.route("/usuarios/:id").get(obtenerUsuario);
+router.route("/usuarios/:id").get(obtenerUsuario).delete(borrarUsuario);
 
-router.route("/").post(login);
+router.route("/login").post(login);
 
 router.route("/register").post(  [
     check("nombreUsuario").notEmpty().withMessage("El nombre es obligatorio"),

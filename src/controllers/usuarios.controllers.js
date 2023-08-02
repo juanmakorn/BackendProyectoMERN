@@ -3,24 +3,31 @@ import bcrypt from 'bcrypt'
 
 export const register = async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { email, contraseña, nombreUsuario } = req.body;
   
-      let usuario = await Usuario.findOne({ email });
-      if (usuario) {
-
+      let usuarioEmail = await Usuario.findOne({ email });
+      if (usuarioEmail) {
         return res.status(400).json({
           mensaje: "ya existe un usuario con el correo enviado",
         });
       }
-      usuario = new Usuario(req.body);
+
+      let usuarioNombre = await Usuario.findOne({ nombreUsuario });
+      if (usuarioNombre) {
+        return res.status(400).json({
+          mensaje: "ya existe un usuario con el nombre enviado",
+        });
+      }
+      const usuario = new Usuario(req.body);
 
       const salt = bcrypt.genSaltSync(10);
-      usuario.password = bcrypt.hashSync(password,salt);
+      usuario.contraseña = bcrypt.hashSync(contraseña,salt);
   
       await usuario.save();
       res.status(201).json({
         mensaje: "usuario creado",
         nombre: usuario.nombreUsuario,
+        perfil: usuario.perfil,
         uid: usuario._id,
       });
     } catch (error) {
@@ -57,32 +64,46 @@ export const obtenerUsuario = async (req, res) => {
 
 export const login = async (req,res) => {
     try {
-        const {email, password} = req.body;
+        const {email, contraseña} = req.body;
 
         let usuario = await Usuario.findOne({email});
         if(!usuario){
 
           return res.status(404).json({
-            mensaje: 'Correo o password invalido - correo'
+            mensaje: 'Correo o contraseña invalido - correo'
           })
         }
-
-        const passwordValido = bcrypt.compareSync(password, usuario.password);
-
-        if(!passwordValido){
+        console.log(contraseña);
+        const contraseñaValido = bcrypt.compareSync(contraseña, usuario.contraseña);
+        if(!contraseñaValido){
           return res.status(404).json({
-            mensaje: 'Correo o password invalido - password'
+            mensaje: 'Correo o contraseña invalido - contraseña'
           })
         }
 
         res.status(200).json({
           mensaje: 'El usuario es correcto',
-          nombreUsuario: usuario.nombreUsuario
+          nombreUsuario: usuario.nombreUsuario,
+          perfil: usuario.perfil,
         })
       } catch (error) {
         console.log(error);
         res.status(404).json({
-          mensaje: "Usuario o password incorrecto",
+          mensaje: "Usuario o contraseña incorrecto",
         });
       }
 }
+
+export const borrarUsuario = async (req, res) => {
+    try {
+        await Usuario.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: "El usuario fue borrado",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: "Error, no se borro el usuario",
+        });
+    }
+};

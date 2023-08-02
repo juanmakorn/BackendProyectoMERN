@@ -39,7 +39,7 @@ export const borrarProducto = async (req, res) => {
     try {
         await Producto.findByIdAndDelete(req.params.id);
         res.status(200).json({
-            mensaje: "EL producto fue borrado",
+            mensaje: "El producto fue borrado",
         });
     } catch (error) {
         console.log(error);
