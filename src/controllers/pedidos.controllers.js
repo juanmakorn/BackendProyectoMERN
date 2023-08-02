@@ -48,3 +48,15 @@ export const editarEstadoPedido = async (req, res) => {
         });
     }
 };
+
+export const obtenerListaPedidos = async (req, res) => {
+    try {
+        const listaPedidos = await Pedido.find();
+        res.status(200).json(listaPedidos);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: "Error al intentar obtener los pedidos",
+        });
+    }
+};
