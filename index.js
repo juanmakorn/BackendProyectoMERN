@@ -6,6 +6,7 @@ import path from "path";
 import "./src/database/dbConnection";
 import productosRouter from "./src/routes/productos.routes";
 import usuariosRouter from "./src/routes/usuarios.routes";
+import pedidosRouter from "./src/routes/pedidos.routes";
 
 dotenv.config();
 
@@ -32,3 +33,5 @@ app.use(morgan("dev"));
 //rutes
 app.use("/rolling-bites", productosRouter);
 app.use("/rolling-bites/auth", usuariosRouter);
+
+app.use('/rolling-bites', pedidosRouter);
