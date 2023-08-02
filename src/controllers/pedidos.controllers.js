@@ -15,9 +15,6 @@ export const crearPedido = async (req, res) => {
   }
 };
 
-
-
-
 export const borrarPedido = async (req, res) => {
   try {
     const pedidoABorrar = await Pedido.findById(req.params.id);
@@ -38,4 +35,16 @@ export const borrarPedido = async (req, res) => {
   }
 };
 
-
+export const editarEstadoPedido = async (req, res) => {
+    try {
+        await Producto.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: "El estado del pedido fue actualizado correctamente",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: "Error, no se pudo actualizar el estado del pedido",
+        });
+    }
+};
