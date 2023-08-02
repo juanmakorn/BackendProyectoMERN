@@ -1,6 +1,37 @@
 import Usuario from "../models/usuario";
 import bcrypt from 'bcrypt'
 
+export const Register = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+  
+      let usuario = await Usuario.findOne({ email });
+      console.log(usuario);
+      if (usuario) {
+
+        return res.status(400).json({
+          mensaje: "ya existe un usuario con el correo enviado",
+        });
+      }
+      usuario = new Usuario(req.body);
+
+      const salt = bcrypt.genSaltSync(10);
+      usuario.password = bcrypt.hashSync(password,salt);
+  
+      await usuario.save();
+      res.status(201).json({
+        mensaje: "usuario creado",
+        nombre: usuario.nombreUsuario,
+        uid: usuario._id,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        mensaje: "El usuario no pudo ser creado",
+      });
+    }
+  };
+
 export const obtenerListaUsuarios = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
