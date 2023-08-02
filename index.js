@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import * as dotenv from "dotenv";
 import	'./src/database/dbConnection'
 import productosRouter from "./src/routes/productos.routes";
+import usuariosRouter from "./src/routes/usuarios.routes";
 
 dotenv.config();
 
@@ -26,4 +27,5 @@ app.use(cors());
 app.use(morgan('dev'));
 
 //rutes
-app.use("/productos", productosRouter)
+app.use("/rolling-bites", productosRouter)
+app.use("/rolling-bites/auth", usuariosRouter)

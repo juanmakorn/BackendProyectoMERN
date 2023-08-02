@@ -7,5 +7,4 @@ const router = Router();
 router.route("/").post(validarProducto, crearProducto)
 router.route("/:id").put(editarProducto);
 
-
 export default router;
