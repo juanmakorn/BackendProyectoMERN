@@ -15,6 +15,9 @@ export const crearPedido = async (req, res) => {
   }
 };
 
+
+
+
 export const borrarPedido = async (req, res) => {
   try {
     const pedidoABorrar = await Pedido.findById(req.params.id);
@@ -34,3 +37,5 @@ export const borrarPedido = async (req, res) => {
     });
   }
 };
+
+
