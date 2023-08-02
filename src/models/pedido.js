@@ -8,7 +8,7 @@ const pedidoSchema = new Schema({
   productos: [
     {
       id: {
-        type: Number,
+        type: String,
         required: true,
       },
       producto: {

@@ -37,7 +37,7 @@ export const borrarPedido = async (req, res) => {
 
 export const editarEstadoPedido = async (req, res) => {
     try {
-        await Producto.findByIdAndUpdate(req.params.id, req.body);
+        await Pedido.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({
             mensaje: "El estado del pedido fue actualizado correctamente",
         });
