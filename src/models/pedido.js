@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 
-const pedidoSchema = new mongoose.Schema({
+const pedidoSchema = new Schema({
   usuario: {
     type: String,
     required: true,

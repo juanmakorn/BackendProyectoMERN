@@ -1,9 +1,8 @@
 import { Router} from "express";
+import { crearPedido } from "../controllers/pedidos.controllers";
 
 const router = Router();
 
-router.route('/prueba').get((req,res)=> {
-    res.send("esta es una prueba de mi ruta get")
-});
+router.route('/pedidos').post(crearPedido);
 
 export default router;
