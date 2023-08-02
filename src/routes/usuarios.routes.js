@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { obtenerListaUsuarios, obtenerUsuario ,login,register, borrarUsuario} from "../controllers/usuarios.controllers";
+import { obtenerListaUsuarios, obtenerUsuario ,login,register, borrarUsuario, editarEstadoUsuario} from "../controllers/usuarios.controllers";
+import ValidarEstadoUsuario from "../helpers/validarEstadoUsuario";
 
 const router = Router();
 
 router.route("/usuarios").get(obtenerListaUsuarios)
-router.route("/usuarios/:id").get(obtenerUsuario).delete(borrarUsuario);
+router.route("/usuarios/:id").get(obtenerUsuario).delete(borrarUsuario).patch(ValidarEstadoUsuario, editarEstadoUsuario);
 
 router.route("/login").post(login);
 
