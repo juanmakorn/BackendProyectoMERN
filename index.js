@@ -33,5 +33,4 @@ app.use(morgan("dev"));
 //rutes
 app.use("/rolling-bites", productosRouter);
 app.use("/rolling-bites/auth", usuariosRouter);
-
 app.use('/rolling-bites', pedidosRouter);

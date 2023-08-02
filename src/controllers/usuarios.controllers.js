@@ -27,6 +27,7 @@ export const register = async (req, res) => {
       res.status(201).json({
         mensaje: "usuario creado",
         nombre: usuario.nombreUsuario,
+        perfil: usuario.perfil,
         uid: usuario._id,
       });
     } catch (error) {
@@ -63,32 +64,32 @@ export const obtenerUsuario = async (req, res) => {
 
 export const login = async (req,res) => {
     try {
-        const {email, password} = req.body;
+        const {email, contraseña} = req.body;
 
         let usuario = await Usuario.findOne({email});
         if(!usuario){
 
           return res.status(404).json({
-            mensaje: 'Correo o password invalido - correo'
+            mensaje: 'Correo o contraseña invalido - correo'
           })
         }
-
-        const passwordValido = bcrypt.compareSync(password, usuario.password);
-
-        if(!passwordValido){
+        console.log(contraseña);
+        const contraseñaValido = bcrypt.compareSync(contraseña, usuario.contraseña);
+        if(!contraseñaValido){
           return res.status(404).json({
-            mensaje: 'Correo o password invalido - password'
+            mensaje: 'Correo o contraseña invalido - contraseña'
           })
         }
 
         res.status(200).json({
           mensaje: 'El usuario es correcto',
-          nombreUsuario: usuario.nombreUsuario
+          nombreUsuario: usuario.nombreUsuario,
+          perfil: usuario.perfil,
         })
       } catch (error) {
         console.log(error);
         res.status(404).json({
-          mensaje: "Usuario o password incorrecto",
+          mensaje: "Usuario o contraseña incorrecto",
         });
       }
 }
