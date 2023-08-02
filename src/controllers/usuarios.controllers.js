@@ -73,7 +73,6 @@ export const login = async (req,res) => {
             mensaje: 'Correo o contraseña invalido - correo'
           })
         }
-        console.log(contraseña);
         const contraseñaValido = bcrypt.compareSync(contraseña, usuario.contraseña);
         if(!contraseñaValido){
           return res.status(404).json({
