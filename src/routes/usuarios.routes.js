@@ -8,9 +8,9 @@ const router = Router();
 router.route("/usuarios").get(obtenerListaUsuarios)
 router.route("/usuarios/:id").get(obtenerUsuario).delete(borrarUsuario).patch(ValidarEstadoUsuario, editarEstadoUsuario);
 
-router.route("/login").post(login);
+router.route("/usuarios/login").post(login);
 
-router.route("/register").post(  [
+router.route("/usuarios/register").post(  [
     check("nombreUsuario").notEmpty().withMessage("El nombre es obligatorio"),
     check("email", "El email es obligatorio").isEmail(),
     check("password", "El password debe de ser de 6 caracteres")
