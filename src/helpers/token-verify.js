@@ -1,19 +1,25 @@
-import jwt  from "jsonwebtoken";
+import jwt from 'jsonwebtoken'
 
-const generarJWT = (uid, nombre)=>{
-    return new Promise( (resolve, reject)=>{
+const validarJWT = (req, res, next)=>{
 
-        const payload = {uid, nombre};
-
-        jwt.sign(payload,process.env.SECRET_JWT,{
-            expiresIn: '2h'
-        },(err, token)=>{
-            if(err){
-                reject('No se pudo generar el token');
-            }
-            resolve(token);
+    const token = req.header('x-token');
+    if(!token){
+        return res.status(401).json({
+            mensaje: 'No hay token en la peticion'
         })
-    })
+    }
+    try{
+        const payload =  jwt.verify(token, process.env.SECRET_JWT)
+        req.id = payload.uid;
+        req.nombre = payload.nombre;
+
+    }catch(error){
+        return res.status(401).json({
+            mensaje: 'El token no es valido'
+        })
+    }
+
+    next();
 }
 
-export default generarJWT
+export default validarJWT;
