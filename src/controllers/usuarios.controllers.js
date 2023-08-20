@@ -1,5 +1,5 @@
 import Usuario from "../models/usuario";
-import GenerarJWT from "../helpers/token-sign";
+import generarJWT from "../helpers/token-sing";
 import bcrypt from 'bcrypt'
 
 export const register = async (req, res) => {
@@ -81,7 +81,7 @@ export const login = async (req,res) => {
           })
         }
 
-        const token = await GenerarJWT(usuario._id,  usuario.nombreUsuario)
+        const token = await generarJWT(usuario._id,  usuario.nombreUsuario)
 
         res.status(200).json({
           mensaje: 'El usuario es correcto',
