@@ -81,14 +81,14 @@ export const login = async (req,res) => {
           })
         }
 
-        const token = await generarJWT(usuario.nombreUsuario)
+        const token = await generarJWT(usuario.nombreUsuario);
 
         res.status(200).json({
           mensaje: 'El usuario es correcto',
           nombreUsuario: usuario.nombreUsuario,
           perfil: usuario.perfil,
           estado: usuario.estado,
-          token: usuario.token
+          token
         })
       } catch (error) {
         console.log(error);
