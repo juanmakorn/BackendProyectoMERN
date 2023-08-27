@@ -87,6 +87,7 @@ export const login = async (req,res) => {
           mensaje: 'El usuario es correcto',
           nombreUsuario: usuario.nombreUsuario,
           perfil: usuario.perfil,
+          estado: usuario.estado,
           token: usuario.token
         })
       } catch (error) {
