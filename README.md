@@ -38,11 +38,9 @@ npm run dev
 ## Para entorno local
 Creamos el archivo .env y agregamos las siguientes variables de entorno:
 
-DATABASE_URI = mongodb+srv://nicopowell30:c4K3AhTgCLJ16m6U@cluster0.1iwjanx.mongodb.net/rolling-bites
-
-Palabra Clave JsonWebTokken:
-
-SECRET_JWT=M%F5-S@G&R0-02@07
+VITE_API_PRODUCTO=http://localhost:4000/productos
+VITE_API_USUARIO=http://localhost:4000/auth/usuarios
+VITE_API_PEDIDOS=http://localhost:4000/pedidos
 
 
 ## Autores
