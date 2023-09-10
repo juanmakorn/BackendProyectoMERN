@@ -13,10 +13,10 @@ router.route("/usuarios/login").post(login);
 router.route("/usuarios/register").post(  [
     check("nombreUsuario").notEmpty().withMessage("El nombre es obligatorio"),
     check("email", "El email es obligatorio").isEmail(),
-    check("password", "El password debe de ser de 6 caracteres")
+    check("password", "El password debe de ser de 8 caracteres")
       .isLength({
-        min: 6,
-        max: 15,
+        min: 8,
+        max: 16,
       })
       .matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)
       .withMessage(

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import validarProducto from "../helpers/validarProducto";
+import validarJWT from "../helpers/token-verify";
 import {
   borrarProducto,
   crearProducto,
@@ -13,6 +14,6 @@ import validarEstadoProducto from "../helpers/validarEstadoProducto";
 const router = Router();
 
 router.route("/productos").get(obtenerListaProductos).post(validarProducto, crearProducto);
-router.route("/productos/:id").get(obtenerProducto).delete(borrarProducto).put(validarProducto, editarProducto).patch(validarEstadoProducto,editarEstadoProducto);
+router.route("/productos/:id").get(obtenerProducto).delete(borrarProducto).put([validarJWT,validarProducto], editarProducto).patch(validarEstadoProducto,editarEstadoProducto);
   
 export default router;

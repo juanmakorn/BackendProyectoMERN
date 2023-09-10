@@ -1,4 +1,5 @@
 import Usuario from "../models/usuario";
+import generarJWT from "../helpers/token-sing";
 import bcrypt from 'bcrypt'
 
 export const register = async (req, res) => {
@@ -80,11 +81,14 @@ export const login = async (req,res) => {
           })
         }
 
+        const token = await generarJWT(usuario.nombreUsuario);
+
         res.status(200).json({
           mensaje: 'El usuario es correcto',
           nombreUsuario: usuario.nombreUsuario,
           perfil: usuario.perfil,
-          estado: usuario.estado
+          estado: usuario.estado,
+          token
         })
       } catch (error) {
         console.log(error);
