@@ -38,9 +38,9 @@ npm run dev
 ## Para entorno local
 Creamos el archivo .env y agregamos las siguientes variables de entorno:
 
-VITE_API_PRODUCTO=http://localhost:3004/productos
-VITE_API_USUARIO=http://localhost:3004/usuarios
-VITE_API_PEDIDOS=http://localhost:3004/
+VITE_API_PRODUCTO=http://localhost:4000/productos
+VITE_API_USUARIO=http://localhost:4000/auth/usuarios
+VITE_API_PEDIDOS=http://localhost:4000/pedidos
 
 
 ## Autores
