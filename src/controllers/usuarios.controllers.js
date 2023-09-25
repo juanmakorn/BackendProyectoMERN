@@ -64,38 +64,36 @@ export const obtenerUsuario = async (req, res) => {
 };
 
 export const login = async (req,res) => {
-    try {
-        const {email, contraseña} = req.body;
-
-        let usuario = await Usuario.findOne({email});
-        if(!usuario){
-
-          return res.status(404).json({
-            mensaje: 'Correo o contraseña invalido - correo'
-          })
-        }
-        const contraseñaValido = bcrypt.compareSync(contraseña, usuario.contraseña);
-        if(!contraseñaValido){
-          return res.status(404).json({
-            mensaje: 'Correo o contraseña invalido - contraseña'
-          })
-        }
-
-        const token = await generarJWT(usuario.nombreUsuario);
-
-        res.status(200).json({
-          mensaje: 'El usuario es correcto',
-          nombreUsuario: usuario.nombreUsuario,
-          perfil: usuario.perfil,
-          estado: usuario.estado,
-          token
+  try {
+      const {email, contraseña} = req.body;
+      let usuario = await Usuario.findOne({email});
+      if(!usuario){
+        return res.status(404).json({
+          mensaje: 'Correo o contraseña invalido - correo'
         })
-      } catch (error) {
-        console.log(error);
-        res.status(404).json({
-          mensaje: "Usuario o contraseña incorrecto",
-        });
       }
+      const contraseñaValido = bcrypt.compareSync(contraseña, usuario.contraseña);
+      if(!contraseñaValido){
+        return res.status(404).json({
+          mensaje: 'Correo o contraseña invalido - contraseña'
+        })
+      }
+
+      const token = await generarJWT(usuario.nombreUsuario);
+
+      res.status(200).json({
+        mensaje: 'El usuario es correcto',
+        nombreUsuario: usuario.nombreUsuario,
+        perfil: usuario.perfil,
+        estado: usuario.estado,
+        token
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(404).json({
+        mensaje: "Usuario o contraseña incorrecto",
+      });
+    }
 }
 
 export const borrarUsuario = async (req, res) => {
