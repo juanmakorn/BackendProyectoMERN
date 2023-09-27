@@ -12,8 +12,7 @@ import {
 import validarEstadoProducto from "../helpers/validarEstadoProducto";
 
 const router = Router();
-
 router.route("/productos").get(obtenerListaProductos).post(validarProducto, crearProducto);
-router.route("/productos/:id").get(obtenerProducto).delete(borrarProducto).put([validarJWT,validarProducto], editarProducto).patch(validarEstadoProducto,editarEstadoProducto);
-  
+router.route("/productos/:id").get(obtenerProducto).delete(borrarProducto).put(validarProducto, editarProducto).patch(validarEstadoProducto,editarEstadoProducto).post(validarProducto, crearProducto);
+
 export default router;
