@@ -12,11 +12,11 @@ import {
 import validarEstadoProducto from "../helpers/validarEstadoProducto";
 
 const router = Router();
-
 router
   .route("/productos")
   .get(obtenerListaProductos)
   .post(validarProducto, crearProducto);
+
 router
   .route("/productos/:id")
   .get(obtenerProducto)
@@ -24,5 +24,4 @@ router
   .put(validarProducto, editarProducto)
   .patch(validarEstadoProducto, editarEstadoProducto)
   .post(validarProducto, crearProducto);
-
 export default router;
