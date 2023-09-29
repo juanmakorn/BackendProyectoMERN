@@ -36,7 +36,7 @@ const validarProducto = [
     check("categoria")
         .notEmpty()
         .withMessage("La categoria es un dato obligatorio")
-        .isIn(["Bebidas sin alcohol", "Bebidas con alcohol", "Pizzas", "Pastas"])
+        .isIn(["Bebidas sin alcohol", "Bebidas con alcohol", "Pizzas", "Pastas" , "Otros"])
         .withMessage("La categoria debe ser una opcion valida"),
     (req, res, next) => {
         resultadoValidacion(req, res, next);
