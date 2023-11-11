@@ -17,10 +17,10 @@ const validarProducto = [
         .isNumeric()
         .withMessage("El precio debe ser un valor numerico")
         .custom((value) => {
-            if (value >= 1) {
+            if (value >= 1 && value <= 1000000000000000) {
                 return true;
             } else {
-                throw new Error("El precio debe ser mayor a 1");
+                throw new Error("El precio debe estar entre 1 y 1000000000000000");
             }
         }),
     check("detalle")
