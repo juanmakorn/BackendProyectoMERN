@@ -2,34 +2,42 @@
 
 ## Descripción
 
-Este repositorio contiene el Backend del proyecto final del curso de FullStack de Rolling Code School, en este proyecto armamos un sitio web de un restaurante llamado RollingBites, en el cual se pueden ver, crear, editar y eliminar productos en una base de datos, tambien se pueden realizar pedidos y crear usuarios nuevos
+Este repositorio contiene el FrontEnd del proyecto final del curso de FullStack de Rolling Code School, en este proyecto armamos un sitio web de un restaurante llamado RollingBites, en el cual se pueden ver, crear, editar y eliminar productos en una base de datos, tambien se pueden realizar pedidos y crear usuarios nuevos.
+Gracias a las metodologia enseñada mostramos la Herramienta de gestión de proyectos y tareas en el cual plasmamos todo lo realizado.
+
 
 ## Demo
 
-[Rolling Bites]()
+[Rolling Bites netlify](https://rolling-bites.netlify.app/)
 
-## Repositorio FrontEnd
+## Repositorio Frontend
 
-[Backend](https://github.com/nicopowell/proyectoMERN)
+[Frontend]([https://github.com/juanmakorn/BackendProyectoMERN](https://github.com/nicopowell/proyectoMERN))
 
 ## Tecnologias / Herramientas 🛠 
 
-- [Babel](https://babeljs.io/)
-- [Cors](https://www.npmjs.com/package/cors)
-- [Express](https://expressjs.com/es/)
-- [Morgan](https://www.npmjs.com/package/morgan)
+- [BabelJs](https://babeljs.io/)
 - [Mongoose](https://mongoosejs.com/)
+- [Cors](https://github.com/expressjs/cors#readme)
+- [Morgan](https://github.com/expressjs/morgan)
+- [Express Validator](https://express-validator.github.io/docs)
 
 ## Como utilizar este repositorio 🖥
 En una terminal usar los siguientes comando
 
 ```
-git clone https://github.com/juanmakorn/BackendProyectoMERN.git
+https://github.com/juanmakorn/BackendProyectoMERN.git
 
 npm i
 
 npm run dev
 ```
+## Para entorno local
+Creamos el archivo .env y agregamos las siguientes variables de entorno:
+
+- DATABASE_URI = mongodb+srv://nicopowell30:c4K3AhTgCLJ16m6U@cluster0.1iwjanx.mongodb.net/rolling-bites
+- SECRET_JWT=M%F5-S@G&R0-02@07
+
 
 ## Autores
 
