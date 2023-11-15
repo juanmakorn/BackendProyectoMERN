@@ -2,17 +2,6 @@ import { check } from "express-validator";
 import resultadoValidacion from "./resultadoValidacion";
 
 const validarProducto = [
-  check("nombre")
-    .notEmpty()
-    .withMessage("EL nombre del producto es obligatorio")
-    .isLength({ min: 2, max: 100 })
-    .withMessage(
-      "El nombre del producto debe contener entre 2 y 100 caracteres"
-    ),
-  check("estado")
-    .notEmpty()
-    .withMessage("El estado es obligatorio")
-    .isIn(["Activo", "De baja"]),
   check("precio")
     .notEmpty()
     .withMessage("El precio es obligatorio")
@@ -46,7 +35,6 @@ const validarProducto = [
     .withMessage("La categoria debe ser una opcion valida"),
   (req, res, next) => {
     resultadoValidacion(req, res, next);
-  },
 ];
 
 export default validarProducto;
