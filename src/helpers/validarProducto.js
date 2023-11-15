@@ -34,7 +34,7 @@ const validarProducto = [
     .isIn(["Bebidas sin alcohol", "Bebidas con alcohol", "Pizzas", "Pastas"])
     .withMessage("La categoria debe ser una opcion valida"),
   (req, res, next) => {
-    resultadoValidacion(req, res, next);
+    resultadoValidacion(req, res, next);}
 ];
 
 export default validarProducto;
